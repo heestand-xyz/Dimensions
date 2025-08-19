@@ -19,6 +19,7 @@ public protocol Rect<D>: Sendable {
     var size: S { get }
     init(origin: P, size: S)
     init(center: P, size: S)
+    mutating func pad(_ padding: CGFloat)
     func padded(_ padding: CGFloat) -> Self
 }
 

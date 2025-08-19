@@ -16,14 +16,14 @@ public protocol Dimensions: Sendable {
 }
 
 public enum `2D`: Dimensions {
-    public static var kind: DimensionsKind { .dimensions2 }
+    public static var kind: DimensionsKind { ._2D }
     public typealias P = CGPoint
     public typealias S = CGSize
     public typealias R = CGRect
 }
 
 public enum `3D`: Dimensions {
-    public static var kind: DimensionsKind { .dimensions3 }
+    public static var kind: DimensionsKind { ._3D }
     public typealias P = Point3D
     public typealias S = Size3D
     public typealias R = Rect3D

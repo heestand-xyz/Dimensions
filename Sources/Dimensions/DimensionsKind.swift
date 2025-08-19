@@ -6,16 +6,16 @@
 //
 
 public enum DimensionsKind: Int, Codable, Hashable, Sendable {
-    case dimensions2 = 2
-    case dimensions3 = 3
+    case _2D = 2
+    case _3D = 3
 }
 
 extension DimensionsKind {
     public var type: any Dimensions.Type {
         switch self {
-        case .dimensions2:
+        case ._2D:
             `2D`.self
-        case .dimensions3:
+        case ._3D:
             `3D`.self
         }
     }
