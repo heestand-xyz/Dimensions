@@ -13,6 +13,12 @@ public protocol Size<D>: Sendable {
     static var zero: Self { get }
     associatedtype P: Point where P.D == D
     var point: P { get }
+    func getWidth() -> Double
+    func getHeight() -> Double
+    func getDepth() -> Double
+    mutating func setWidth(_ value: Double)
+    mutating func setHeight(_ value: Double)
+    mutating func setDepth(_ value: Double)
 }
 
 // MARK: - Dimension
@@ -22,12 +28,34 @@ extension CGSize: Size {
     public var point: CGPoint {
         CGPoint(x: width, y: height)
     }
+    public func getWidth() -> Double { width }
+    public func getHeight() -> Double { height }
+    public func getDepth() -> Double { 0.0 }
+    public mutating func setWidth(_ value: Double) {
+        width = value
+    }
+    public mutating func setHeight(_ value: Double) {
+        height = value
+    }
+    public mutating func setDepth(_ value: Double) {}
 }
 
 extension Size3D: Size {
     public typealias D = `3D`
     public var point: Point3D {
         Point3D(x: width, y: height, z: depth)
+    }
+    public func getWidth() -> Double { width }
+    public func getHeight() -> Double { height }
+    public func getDepth() -> Double { depth }
+    public mutating func setWidth(_ value: Double) {
+        width = value
+    }
+    public mutating func setHeight(_ value: Double) {
+        height = value
+    }
+    public mutating func setDepth(_ value: Double) {
+        depth = value
     }
 }
 

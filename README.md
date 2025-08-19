@@ -54,20 +54,26 @@ let sizeType: any Size.Type = `3D`.S.self
 let rectType: any Rect.Type = `3D`.R.self
 ```
 
-## DimensionsType Enum
+## DimensionsKind Enum
 
-The `Dimensions` protocol has a static property called `type`, use this to figure out the dimensions of a type erased `Point`, `Size` or `Rect`.
+The `Dimensions` protocol has a static property called `kind`, use this to switch over the dimensions of a type erased `Point`, `Size` or `Rect`.
 
 ```swift
 let point: any Point = CGPoint.zero
 let dimensions: any Dimensions.Type = point.dimensions
-let is2D: Bool = dimensions.type == .`2D`
+let is2D: Bool = dimensions.kind == .dimensions2
 // true
 ```
 
-> The `DimensionsType` conforms to `Codable`, `Hashable`, and `Sendable`.
+> The `DimensionsKind` conforms to `Codable`, `Hashable`, and `Sendable`.
 
 > The `rawValue` is an `Int` of `2` or `3`.
+
+Get the type of `Dimensions` like this:
+
+```swift
+DimensionsKind.dimensions3.type == `3D`.self
+```
 
 ## Example Usage
 

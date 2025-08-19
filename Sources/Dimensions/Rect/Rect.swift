@@ -17,6 +17,9 @@ public protocol Rect<D>: Sendable {
     var max: P { get }
     associatedtype S: Size where S.D == D
     var size: S { get }
+    init(origin: P, size: S)
+    init(center: P, size: S)
+    func padded(_ padding: CGFloat) -> Self
 }
 
 extension Rect {

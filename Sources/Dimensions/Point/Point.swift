@@ -15,6 +15,12 @@ public protocol Point: Sendable {
     static var zero: Self { get }
     associatedtype S: Size where S.D == D
     var size: S { get }
+    func getX() -> Double
+    func getY() -> Double
+    func getZ() -> Double
+    mutating func setX(_ value: Double)
+    mutating func setY(_ value: Double)
+    mutating func setZ(_ value: Double)
 }
 
 // MARK: - Dimension
@@ -24,12 +30,34 @@ extension CGPoint: Point {
     public var size: CGSize {
         CGSize(width: x, height: y)
     }
+    public func getX() -> Double { x }
+    public func getY() -> Double { y }
+    public func getZ() -> Double { 0.0 }
+    public mutating func setX(_ value: Double) {
+        x = value
+    }
+    public mutating func setY(_ value: Double) {
+        y = value
+    }
+    public mutating func setZ(_ value: Double) {}
 }
 
 extension Point3D: Point {
     public var dimensions: `3D`.Type { `3D`.self }
     public var size: Size3D {
         Size3D(width: x, height: y, depth: z)
+    }
+    public func getX() -> Double { x }
+    public func getY() -> Double { y }
+    public func getZ() -> Double { z }
+    public mutating func setX(_ value: Double) {
+        x = value
+    }
+    public mutating func setY(_ value: Double) {
+        y = value
+    }
+    public mutating func setZ(_ value: Double) {
+        z = value
     }
 }
 
