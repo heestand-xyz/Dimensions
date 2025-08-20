@@ -10,6 +10,7 @@ import Spatial
 
 public protocol Size<D>: Sendable {
     associatedtype D: Dimensions
+    var dimensions: D.Type { get }
     static var zero: Self { get }
     associatedtype P: Point where P.D == D
     var point: P { get }
@@ -24,7 +25,7 @@ public protocol Size<D>: Sendable {
 // MARK: - Dimension
 
 extension CGSize: Size {
-    public typealias D = `2D`
+    public var dimensions: `2D`.Type { `2D`.self }
     public var point: CGPoint {
         CGPoint(x: width, y: height)
     }
@@ -41,7 +42,7 @@ extension CGSize: Size {
 }
 
 extension Size3D: Size {
-    public typealias D = `3D`
+    public var dimensions: `3D`.Type { `3D`.self }
     public var point: Point3D {
         Point3D(x: width, y: height, z: depth)
     }

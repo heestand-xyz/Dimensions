@@ -10,6 +10,7 @@ import Spatial
 
 public protocol Rect<D>: Sendable {
     associatedtype D: Dimensions
+    var dimensions: D.Type { get }
     static var zero: Self { get }
     associatedtype P: Point where P.D == D
     var min: P { get }
@@ -31,7 +32,7 @@ extension Rect {
 // MARK: - Dimension
 
 extension CGRect: Rect {
-    public typealias D = `2D`
+    public var dimensions: `2D`.Type { `2D`.self }
     public var min: CGPoint {
         CGPoint(x: minX, y: minY)
     }
@@ -44,7 +45,7 @@ extension CGRect: Rect {
 }
 
 extension Rect3D: Rect {
-    public typealias D = `3D`
+    public var dimensions: `3D`.Type { `3D`.self }
     public var mid: Point3D {
         center
     }
